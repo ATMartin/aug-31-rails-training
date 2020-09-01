@@ -1,7 +1,7 @@
 FROM ruby:2.6.6
 
 RUN rm /bin/sh && ln -s /bin/bash /bin/sh
-RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs ghostscript sqlite3 vim
+RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs ghostscript sqlite3 vim firefox-esr
 
 RUN mkdir -p /app
 WORKDIR /app
@@ -21,6 +21,7 @@ RUN yarn install --check-files
 
 COPY . ./
 
+ENV CODESPACES=true 
 RUN echo "echo \"Welcome to Test Double's Rails 101: Intro To Ruby & Rails!\"" >> ~/.bashrc
 
 EXPOSE 3000
